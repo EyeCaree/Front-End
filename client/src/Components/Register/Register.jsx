@@ -10,8 +10,8 @@ import { BsFillShieldLockFill } from "react-icons/bs";
 import { AiOutlineSwapRight } from "react-icons/ai";
 import { MdEmail } from "react-icons/md";
 
-// URL Backend dari .env (pastikan sudah ada VITE_API_URL di .env)
-const API_URL = import.meta.env.VITE_API_URL || "http://172.20.10.3:8000";
+// Ganti IP dan port sesuai server teman kamu
+const API_URL = import.meta.env.VITE_API_URL || "http://192.168.1.8:8000";
 
 const Register = () => {
     const [formData, setFormData] = useState({
@@ -23,7 +23,6 @@ const Register = () => {
     const [status, setStatus] = useState("");
     const [loading, setLoading] = useState(false);
 
-    // Handle perubahan input
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -31,24 +30,32 @@ const Register = () => {
         });
     };
 
-    // Handle submit form
     const handleRegister = async (e) => {
         e.preventDefault();
         setLoading(true);
         setStatus("");
 
         try {
-            const response = await axios.post(`${VITE_API_URL}/register`, formData, {
-                headers: { "Content-Type": "application/json" }
+            const response = await axios.post(`${API_URL}/register`, formData, {
+                headers: {
+                    "Content-Type": "application/json"
+                }
             });
 
             if (response.status === 201) {
-                setStatus("Registrasi berhasil!");
+                setStatus("✅ " + response.data.message);
+                // Kalau mau simpan token:
+                // localStorage.setItem("token", response.data.token);
             } else {
-                setStatus("Registrasi gagal. Silakan coba lagi.");
+                setStatus("⚠️ Registrasi gagal. Silakan coba lagi.");
             }
         } catch (error) {
-            setStatus("Registrasi gagal. Silakan coba lagi.");
+            if (error.response && error.response.data) {
+                setStatus("⚠️ " + error.response.data.message);
+                console.error("Detail error:", error.response.data.error);
+            } else {
+                setStatus("⚠️ Registrasi gagal. Silakan coba lagi.");
+            }
         } finally {
             setLoading(false);
         }
@@ -59,7 +66,7 @@ const Register = () => {
             <div className="container">
                 {/* Container dengan background warna */}
                 <div className="colorContainer">
-                    <h2 className="title"> Join Us & Explore More!</h2>
+                    <h2 className="title">Join Us & Explore More!</h2>
                     <p>Sign up and start your journey.</p>
                 </div>
 
@@ -67,7 +74,7 @@ const Register = () => {
                 <div className="formDiv flex">
                     <div className="headerDiv">
                         <img src={logo} alt="Logo" />
-                        <h3 className="welcomeText"> Create Your Account</h3>
+                        <h3 className="welcomeText">Create Your Account</h3>
                     </div>
 
                     <form onSubmit={handleRegister} className="form grid">
@@ -135,7 +142,7 @@ const Register = () => {
                 <div className="footerDiv flex">
                     <span className="text">Already have an Account? </span>
                     <Link to="/">
-                        <button className="btn"> Login </button>
+                        <button className="btn">Login</button>
                     </Link>
                 </div>
             </div>
