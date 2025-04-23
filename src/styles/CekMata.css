@@ -1,0 +1,69 @@
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 80px; /* Jarak antara dua elemen */
+  margin-top: 50px;
+}
+
+.ambil-foto, .upload-foto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center
+}
+
+.ambil-foto img, .upload-foto img {
+  width: 200px; /* Sesuaikan ukuran gambar */
+  height: auto;
+}
+
+.btn-cek {
+  background-color: #6c7a7d; /* Warna tombol */
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  margin-top: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-cek:hover {
+  background-color: #5a6a6d;
+}
+
+.file-input {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-batal {
+  background-color: #d9534f;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.btn-batal:hover {
+  background-color: #c9302c;
+}
+.button-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+
+/* Responsif */
+@media (max-width: 768px) {
+  .button-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
