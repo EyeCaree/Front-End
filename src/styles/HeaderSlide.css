@@ -1,0 +1,61 @@
+/* Wrapper slider agar tidak full width */
+.slider-container {
+    width: 100%;
+  margin: 20px auto;
+  position: relative; /* agar panah relatif ke container */
+  padding: 0 60px; /* tambahkan padding agar panah tidak overlap dengan slider */
+  overflow: visible; /* biar panah bisa muncul di luar */
+  }
+  
+  /* Gambar tetap proporsional */
+  .carousel-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+  }
+  
+  /* Panah kiri-kanan */
+  .slick-prev,
+  .slick-next {
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+  }
+  
+  /* Letakkan panah di luar container */
+  .slick-prev {
+    left: -50px; /* Geser panah kiri ke luar */
+  }
+  
+  .slick-next {
+    right: -50px; /* Geser panah kanan ke luar */
+  }
+  
+  .slick-prev:before,
+  .slick-next:before {
+    font-size: 40px;
+    color: #333;
+  }
+  
+  /* Dot di bawah */
+  .slick-dots {
+    bottom: 10px;
+  }
+  
+  /* Responsif */
+  @media (max-width: 768px) {
+    .slider-container {
+      width: 100%;
+      border-radius: 0;
+    }
+  
+    /* Panah kembali ke dalam untuk layar kecil */
+    .slick-prev {
+      left: 10px;
+    }
+  
+    .slick-next {
+      right: 10px;
+    }
+  }

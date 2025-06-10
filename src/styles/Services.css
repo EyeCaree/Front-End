@@ -16,8 +16,8 @@
 }
 
 .kartu-service p {
-  font-family: "Poppins";
-  font-weight: 800;
+  font-family: "Segoe UI";
+  font-weight: 500;
   font-size: clamp(16px, 2.5vw, 25px); /* Responsive font size */
   text-align: center;
   color: #364f6b;

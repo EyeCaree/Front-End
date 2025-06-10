@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import { useNavigate } from 'react-router-dom';
 
-// Styled components
 const Container = styled.div`
   max-width: 420px;
   margin: 0 auto;
@@ -79,19 +78,14 @@ const Button = styled.button`
   }
 `;
 
-const NextButton = styled(Button)`
-  background-color: #43a047;
-  margin-top: 10px;
-  &:hover {
-    background-color: #2e7d32;
-  }
-`;
-
 const WebcamCapture = () => {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const [mediaStream, setMediaStream] = useState(null);
   const [capturedImage, setCapturedImage] = useState(null);
+  const [predictionResult, setPredictionResult] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -118,13 +112,11 @@ const WebcamCapture = () => {
     setMediaStream(null);
   };
 
-  // Check the image quality, ensuring it is between 360x360 and 2048x2048
   const checkImageQuality = (imageData) => {
     const img = new Image();
     img.src = imageData;
     return new Promise((resolve, reject) => {
       img.onload = () => {
-        // Check if the image resolution is between 360x360 and 2048x2048
         if (img.width < 150 || img.height < 150) {
           reject('Resolusi gambar tidak boleh kurang dari 240x240.');
         } else if (img.width > 2048 || img.height > 2048) {
@@ -151,7 +143,39 @@ const WebcamCapture = () => {
     });
   };
 
-  // Capture image from the video
+  const sendCapturedImage = async (base64Image) => {
+    try {
+      setLoading(true);
+      setErrorMessage("");
+      setPredictionResult(null);
+
+      const blob = await (await fetch(base64Image)).blob();
+      const formData = new FormData();
+      formData.append("image", blob, "captured.jpg");
+
+      const response = await fetch("https://82d6-36-66-204-109.ngrok-free.app/predict", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        const err = await response.json();
+        throw new Error(err.message || "Gagal mendapatkan hasil prediksi.");
+      }
+
+      const result = await response.json();
+      setPredictionResult({
+        prediction: result.result,
+        accuracy: result.akurasi
+      });
+    } catch (err) {
+      console.error(err);
+      setErrorMessage(err.message || "Terjadi kesalahan.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const captureImage = async () => {
     if (!videoRef.current || !canvasRef.current) return;
 
@@ -187,16 +211,13 @@ const WebcamCapture = () => {
       if (isQualityGood) {
         setCapturedImage(imageData);
         stopWebcam();
+        await sendCapturedImage(imageData);
       } else {
         alert("Gambar terlalu gelap atau buram, silakan ulangi pengambilan gambar.");
       }
     } catch (error) {
-      alert(error); // Display error message if image resolution is not valid
+      alert(error);
     }
-  };
-
-  const handleNext = () => {
-    navigate("/klasifikasi", { state: { image: capturedImage } });
   };
 
   return (
@@ -207,7 +228,17 @@ const WebcamCapture = () => {
       {capturedImage ? (
         <>
           <ImagePreview src={capturedImage} alt="Hasil Capture" />
-          <NextButton onClick={handleNext}>Next</NextButton>
+          {loading && <p>Memproses gambar...</p>}
+          {predictionResult && (
+            <div style={{ marginTop: "16px", textAlign: "left" }}>
+              <h3>Hasil Prediksi:</h3>
+              <p><strong>Label:</strong> {predictionResult.prediction}</p>
+              <p><strong>Akurasi:</strong> {predictionResult.accuracy}%</p>
+            </div>
+          )}
+          {errorMessage && (
+            <p style={{ color: "red", marginTop: "12px" }}>{errorMessage}</p>
+          )}
         </>
       ) : (
         <>

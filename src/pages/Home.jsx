@@ -1,32 +1,40 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { homeSection } from "../data/HomeSection";
-
-import parse from "html-react-parser";
-import "../styles/Home.css";
 import { aboutSection } from "../data/AboutSection";
 import { servicesSection } from "../data/ServicesSection";
 import Services from "../components/Services";
 
-function Home() {
+import HeaderSlider from "../components/HeaderSlide"; // Tambahan
+import parse from "html-react-parser";
+import "../styles/Home.css";
+
+
+function Home({ setAuth }) {
   return (
     <>
-      <Navbar />
+      {/* Kirim setAuth ke Navbar agar bisa logout */}
+      <Navbar setAuth={setAuth} />
+      <HeaderSlider />
       <div className="wrapper">
-        {/* home */}
+        {/* Home Section */}
         <section id="home">
-          <img src={homeSection.Image} />
+          {homeSection.Image && (
+            <img src={homeSection.Image} alt="Eye care home visual" />
+          )}
           <div className="kolom">{parse(homeSection.content)}</div>
         </section>
 
-        {/* About */}
+        {/* About Section */}
         <section id="about">
           <div className="kolom">{parse(aboutSection.content)}</div>
-          <img src={aboutSection.Image} />
+          {aboutSection.Image && (
+            <img src={aboutSection.Image} alt="About Eye care" />
+          )}
         </section>
       </div>
 
-      {/* Service */}
+      {/* Services Section */}
       <section id="services">
         <div className="tengah">
           <div className="kolom">{parse(servicesSection.content)}</div>

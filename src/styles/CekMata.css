@@ -1,69 +1,143 @@
 .button-container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 80px; /* Jarak antara dua elemen */
-  margin-top: 50px;
+  align-items: flex-start;
+  gap: 40px;
+  margin-top: 150px;
+  flex-wrap: wrap;
+  padding: 0 20px;
 }
 
 .ambil-foto, .upload-foto {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center
+  text-align: center;
+  background-color: #fafafa;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 250px;
+  min-height: 380px;
+}
+
+.ambil-foto:hover, .upload-foto:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .ambil-foto img, .upload-foto img {
-  width: 200px; /* Sesuaikan ukuran gambar */
-  height: auto;
+  width: 150px;
+  aspect-ratio: 1 / 1; /* Pastikan proporsional persegi */
+  object-fit: contain;  /* Hindari penyet */
+  border-radius: 12px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.btn-cek {
-  background-color: #6c7a7d; /* Warna tombol */
-  color: #fff;
+.btn-cek, .btn-kirim {
+  background-color: #0d96e0;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.btn-cek:hover, .btn-kirim:hover {
+  background-color: #0b7fc4;
+  transform: scale(1.05);
+}
+
+.btn-batal {
+  background-color: #e74c3c;
+  color: white;
   padding: 10px 20px;
   border: none;
-  border-radius: 8px;
-  margin-top: 20px;
-  font-weight: bold;
+  border-radius: 12px;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
 }
 
-.btn-cek:hover {
-  background-color: #5a6a6d;
+.btn-batal:hover {
+  background-color: #c0392b;
+  transform: scale(1.05);
 }
 
 .file-input {
-  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.btn-batal {
-  background-color: #d9534f;
-  color: white;
-  padding: 8px 15px;
-  border: none;
-  border-radius: 8px;
-  margin-top: 10px;
-  cursor: pointer;
-}
-
-.btn-batal:hover {
-  background-color: #c9302c;
-}
 .button-row {
   display: flex;
   gap: 10px;
   margin-top: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
+.hasil-prediksi {
+  margin-top: 15px;
+  text-align: center;
+}
 
-/* Responsif */
+/* Ukuran font dasar */
+html {
+  font-size: 16px;
+}
+
+/* Responsif untuk layar kecil (HP) */
 @media (max-width: 768px) {
   .button-container {
     flex-direction: column;
+    align-items: center;
     gap: 30px;
+    margin-top: 100px;
+    padding: 0 10px;
+  }
+
+  .ambil-foto, .upload-foto {
+    width: 100%;
+    max-width: 350px;
+    min-height: auto;
+    padding: 15px;
+  }
+
+  .ambil-foto img, .upload-foto img {
+    width: 120px;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+  }
+
+  .btn-cek, .btn-kirim, .btn-batal {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px 0;
+  }
+
+  .button-row {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .file-input {
+    width: 100%;
+  }
+
+  .hasil-prediksi {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
   }
 }

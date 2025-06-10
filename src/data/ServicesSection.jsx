@@ -6,5 +6,5 @@ export const servicesSection = {
   ImageCatatan: catatanImg,
   ImageRekomendasi: rekomendasiImg,
   content:
-    "<h2>Our Services</h2><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, optio!</p>",
+    "<h2>Our Services</h2><p>Gak perlu bingung lagi soal gejala mata! EyeCare bantu deteksi, kasih info, dan tingkatkan keakuratan diagnosis masalah mata kamu.</p>",
 };

@@ -1,21 +1,63 @@
-import '../styles/Navbar.css'
-function Navbar() {
+import "../styles/Navbar.css";
+
+import { Link, useNavigate } from "react-router-dom";
+
+function Navbar({ setAuth }) {
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    const confirmLogout = window.confirm("Yakin ingin logout?");
+    if (!confirmLogout) return;
+
+    try {
+      const token = localStorage.getItem("token");
+
+      const response = await fetch("https://82d6-36-66-204-109.ngrok-free.app/logout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (response.ok) {
+        // Hapus token & redirect
+        localStorage.removeItem("token");
+        setAuth(false);
+        navigate("/login", { replace: true });
+      } else {
+        alert("Gagal logout dari server.");
+      }
+    } catch (error) {
+      console.error("Logout error:", error);
+      alert("Terjadi kesalahan saat logout.");
+    }
+  };
+
   return (
     <nav>
-    <div className="wrapper">
-        <div className="logo"><a href=''>Eye Care.</a></div>
-        <div className="menu">
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#Service">Service</a></li>
-                <li><a href="#About">About</a></li>
-                
-                <li><a href="" className="tbl-biru">Sign Up</a></li>
-            </ul>
+      <div className="wrapper">
+        <div className="logo">
+          <a href="/">Eye Care</a>
         </div>
-    </div>
-</nav>
-  )
+        <div className="menu">
+          <ul>
+            <li>
+              <a href="#home">Home</a>
+            </li>
+            <li>
+              <a href="#services">Service</a>
+            </li>
+            <li>
+              <button className="tbl-biru" onClick={handleLogout}>
+                Logout
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  );
 }
 
-export default Navbar
+export default Navbar;

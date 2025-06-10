@@ -10,11 +10,11 @@ function Services() {
       </div>
       <div className="kartu-service">
       <img src={servicesSection.ImageCatatan} />
-        <p>Memberikan Informasi Perawatan Mata Secara Umum</p>
+        <p>Memberikan Informasi Akurasi Analisis</p>
       </div>
       <div className="kartu-service">
       <img src={servicesSection.ImageRekomendasi} />
-        <p>Memberikan Solusi Umum Hasil Deteksi</p>
+        <p>Membantu Pemeriksaan Mandiri</p>
       </div>
     </div>
   );
