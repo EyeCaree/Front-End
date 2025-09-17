@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     host: true,
     allowedHosts: [
-      'd4a2-36-66-204-109.ngrok-free.app' // ganti dengan domain ngrok kamu saat ini
+      '2ed0-36-66-204-109.ngrok-free.app' // ganti dengan domain ngrok kamu saat ini
     ]
   }
 })

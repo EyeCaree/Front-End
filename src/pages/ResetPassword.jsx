@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 
 // Styled components
 const Container = styled.div`
@@ -66,6 +66,7 @@ function ResetPassword() {
   const token = searchParams.get("token");
   const email = searchParams.get("email");
 
+  const navigate = useNavigate();
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
@@ -79,7 +80,7 @@ function ResetPassword() {
     }
 
     try {
-      const response = await fetch("https://82d6-36-66-204-109.ngrok-free.app/reset-password", {
+      const response = await fetch("https://7d66-36-66-204-109.ngrok-free.app/reset-password", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -94,8 +95,12 @@ function ResetPassword() {
 
       const data = await response.json();
       if (response.ok) {
-        setSuccess("Password berhasil direset. Silakan login.");
+        setSuccess("Password berhasil direset. Mengarahkan ke halaman login...");
         setError("");
+
+        setTimeout(() => {
+          navigate("/login", { replace: true });
+        }, 2000);
       } else {
         setError(data.message || "Terjadi kesalahan.");
       }
@@ -104,7 +109,6 @@ function ResetPassword() {
     }
   };
 
-  // Cek jika token atau email tidak ada
   if (!token || !email) {
     return (
       <Container>
