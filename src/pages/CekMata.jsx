@@ -62,7 +62,7 @@ function CekMata() {
 
     try {
       setIsUploading(true);
-      const response = await axios.post("https://7d66-36-66-204-109.ngrok-free.app/foto-mata", formData, {
+      const response = await axios.post("http://192.168.137.223:8000/foto-mata", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -84,7 +84,7 @@ function CekMata() {
     formData.append("image", selectedFile);
 
     try {
-      const response = await axios.post("https://7d66-36-66-204-109.ngrok-free.app/predict", formData, {
+      const response = await axios.post("http://192.168.137.223:8000/predict", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 

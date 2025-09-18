@@ -85,7 +85,7 @@ const ForgotPassword = () => {
 
     setLoading(true);
     try {
-      await fetch("https://7d66-36-66-204-109.ngrok-free.app/forgot-password", {
+      await fetch("http://192.168.137.223:8000/forgot-password", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

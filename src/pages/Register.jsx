@@ -11,7 +11,7 @@ import { AiOutlineSwapRight } from "react-icons/ai";
 import { MdEmail } from "react-icons/md";
 
 // Ganti IP dan port sesuai server teman kamu
-const API_URL = import.meta.env.VITE_API_URL || "https://7d66-36-66-204-109.ngrok-free.app/register";
+const API_URL = import.meta.env.VITE_API_URL || "http://192.168.137.223:8000/register";
 
 const Register = () => {
     const [formData, setFormData] = useState({

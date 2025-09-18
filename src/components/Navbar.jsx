@@ -12,7 +12,7 @@ function Navbar({ setAuth }) {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await fetch("https://7d66-36-66-204-109.ngrok-free.app/logout", {
+      const response = await fetch("http://192.168.137.223:8000/logout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

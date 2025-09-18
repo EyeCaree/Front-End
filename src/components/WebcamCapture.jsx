@@ -153,7 +153,7 @@ const WebcamCapture = () => {
       const formData = new FormData();
       formData.append("image", blob, "captured.jpg");
 
-      const response = await fetch("https://7d66-36-66-204-109.ngrok-free.app/predict", {
+      const response = await fetch("http://192.168.137.223:8000/predict", {
         method: "POST",
         body: formData,
       });

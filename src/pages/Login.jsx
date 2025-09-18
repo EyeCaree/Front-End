@@ -24,7 +24,7 @@ const Login = ({ setAuth }) => {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://7d66-36-66-204-109.ngrok-free.app/login", {
+      const response = await fetch("http://192.168.137.223:8000/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
