@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Open+Sans:wght@300;400;600;700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+:root {
+    --primaryColor: #0d96e0;
+    --hoverColor: #6c757d;
+    --paleGreen: #6c757d;
+    --whiteColor: #ffffff;
+    --blackColor: #000000;
+    --greyText: #6c757d;
+    --bgColor: #ffffff;
+    --inputColor: #fafafa;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid {
+    display: grid;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+html {
+    font-size: 95%;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primaryColor);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--hoverColor);
+}
+
+.btn {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+    background: var(--primaryColor);
+    color: var(--whiteColor);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+    background: var(--hoverColor);
+    transform: scale(1.05);
+}
+
+.loginPage {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bgColor);
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    width: 95%;
+    max-width: 820px;
+    height: 520px;
+    background: var(--whiteColor);
+    border-radius: 12px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.colorContainer {
+    background: var(--primaryColor);
+    color: var(--whiteColor);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+.formDiv {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.headerDiv {
+    text-align: center;
+    margin-bottom: 1.9rem;
+}
+
+.inputDiv {
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 0.5rem;
+}
+
+.input {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--greyText);
+    border-radius: 8px;
+    padding: 0.1rem 1rem;
+    background: var(--inputColor);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.input:focus-within {
+    border-color: var(--hoverColor);
+    box-shadow: 0px 4px 8px rgba(10, 10, 10, 0.3);
+}
+
+.input input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: var(--inputColor);
+    padding: 0.4rem;
+    font-size: 1rem;
+}
+
+.icon {
+    margin-right: 12px;
+    font-size: 1.5rem;
+    color: var(--blackColor);
+}
+
+.footerDiv {
+    margin-top: 1rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 0.23rem;
+}
+
+.footerDiv .btn {
+    margin-top: -0.1rem;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    background-color: var(--primaryColor);
+    color: rgb(255, 255, 255);
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        grid-template-columns: 1fr;
+        height: auto;
+        width: 95%;
+    }
+
+    .colorContainer {
+        padding: 2rem;
+        height: auto;
+    }
+
+    .formDiv {
+        padding: 1.5rem;
+    }
+
+    .inputDiv {
+        max-width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .colorContainer {
+        padding: 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .headerDiv h2 {
+        font-size: 1.4rem;
+    }
+
+    .input input {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        padding: 0.7rem 1rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* FIX AUTOFILL COLOR */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px var(--inputColor) inset !important;
+    -webkit-text-fill-color: var(--blackColor) !important;
+    transition: background-color 5000s ease-in-out 0s !important;
+}

@@ -1,0 +1,111 @@
+.tengah {
+  text-align: center;
+  width: 100%;
+}
+
+body {
+  background-color: #e4f0f8;
+}
+
+a.tbl-biru {
+  background: #3f72af;
+  border-radius: 20px;
+  margin-top: 20px;
+  padding: 15px 20px;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: bold;
+  display: inline-block;
+}
+
+a.tbl-biru:hover {
+  background: #fc5185;
+  text-decoration: none;
+}
+
+a.tbl-pink {
+  background: #fc5185;
+  border-radius: 20px;
+  margin-top: 20px;
+  padding: 15px 20px;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: bold;
+  display: inline-block;
+}
+
+a.tbl-pink:hover {
+  background: #3f72af;
+  text-decoration: none;
+}
+
+/* Section layout */
+section {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 50px;
+  padding: 0 5%;
+}
+
+/* Gambar dalam section */
+section img {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+/* Paragraf umum */
+p {
+  margin: 10px 0;
+  padding: 10px 0;
+}
+
+/* Kolom teks */
+.kolom {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  flex: 1;
+  min-width: 280px;
+}
+
+/* Deskripsi dalam kolom */
+.kolom .deskripsi {
+  font-size: 30px;
+  font-weight: bold;
+  font-family: "Segoe UI";
+  color: #364f6b;
+}
+
+/* Judul */
+h2 {
+  font-family: "Segoe UI";
+  font-weight: 500;
+  font-size: 45px;
+  margin-bottom: 20px;
+  color: #364f6b;
+  width: 100%;
+  line-height: 50px;
+}
+
+/* Responsive */
+@media screen and (max-width: 991.98px) {
+  section {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  section img {
+    max-width: 60%;
+    margin: 0 auto 20px;
+  }
+
+  .kolom {
+    width: 100%;
+  }
+}

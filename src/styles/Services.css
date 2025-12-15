@@ -1,0 +1,24 @@
+.service-list {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.kartu-service {
+  width: 20%;
+  margin: 0 auto;
+}
+
+.kartu-service img {
+  width: 80%;
+  border-radius: 50%;
+}
+
+.kartu-service p {
+  font-family: "Segoe UI";
+  font-weight: 500;
+  font-size: clamp(16px, 2.5vw, 25px); /* Responsive font size */
+  text-align: center;
+  color: #364f6b;
+}

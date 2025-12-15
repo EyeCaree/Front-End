@@ -1,0 +1,89 @@
+.logo a {
+  font-size: 50px;
+  font-weight: 500;
+  float: left;
+  font-family: 'Segoe UI';
+  color: #e4f0f8;
+}
+
+.menu {
+  float: right;
+}
+
+nav {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  line-height: 80px;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  background: #1a465f;
+  z-index: 10; /* tingkatkan agar navbar selalu di atas */
+  border-bottom: 1px solid #364f6b;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+nav ul li {
+  float: left;
+}
+
+/* Tombol Log Out Styling */
+nav ul li button.tbl-biru {
+  background-color: #0077b6;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-left: 10px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: inherit;
+}
+
+nav ul li a {
+  color: #e4f0f8;
+  font-weight: bold;
+  text-align: center;
+  padding: 0px 16px 0px 16px;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 991.98px) {
+  .logo a {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  nav .menu {
+    width: 100%;
+    margin: 0;
+  }
+
+  nav .menu ul {
+    text-align: center;
+    margin: auto;
+    line-height: 60px;
+  }
+
+  nav .menu ul li {
+    display: inline-block;
+    float: none;
+  }
+
+  nav ul li button.tbl-biru:hover {
+    background-color: #fc5185;
+  }
+}
