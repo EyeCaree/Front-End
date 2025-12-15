@@ -1,4 +1,4 @@
-// import HomeImage from "../asset/good-eye.png";
+import HomeImage from "../asset/good-eye.png";
 // export const homeSection = {
 //   Image: HomeImage,
 //   content:
