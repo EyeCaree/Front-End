@@ -12,7 +12,7 @@ function Navbar({ setAuth }) {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await fetch("http://127.0.0.1:8000/logout", {
+      const response = await fetch("https://back-end-production-faf7.up.railway.app/logout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
