@@ -7,7 +7,6 @@
 
 import { useNavigate } from "react-router-dom";
 import HomeImage from "../asset/good-eye.png";
-import { cekMataSection } from "../data/CekMataSection";
 
 function HomeSection() {
   const navigate = useNavigate();
@@ -24,7 +23,7 @@ function HomeSection() {
 
       <button
         className="tbl-pink"
-        onClick={() => navigate("../data/CekMataSection")}
+        onClick={() => navigate("/CekMata") }
       >
         Cek Mata Sekarang
       </button>
